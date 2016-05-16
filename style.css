@@ -11,7 +11,7 @@ body {
 
 input {
     text-align: center;
-    font-size: 5vmin;
+    font-size: 2vmax;
     border:none;
 }
 
@@ -20,13 +20,13 @@ input:focus {
 }
 
 ul {
-    margin: 0 10vw 0 10vw;
+    margin: 0 15vw 0 15vw;
 }
 
 li {
     width:100%;
     /*padding-right: 5vw;*/    
-    font-size: 3vmin;
+    font-size: 1.5vmax;
     list-style-type: none;
     padding: 1vw;
     border-left: thin solid black;
@@ -39,7 +39,7 @@ li:hover {
 }
 
 .snippet {
-    font-size: 2vmin;
+    font-size: 1vmax;
     opacity: 0.6;
 }
 
