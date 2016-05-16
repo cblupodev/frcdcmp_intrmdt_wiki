@@ -1,0 +1,48 @@
+@import url(https://fonts.googleapis.com/css?family=Lusitana);
+
+body {
+    margin:1%;
+    font-family: Lusitana;
+}
+
+#search * {
+    width: 100%;
+}
+
+input {
+    text-align: center;
+    font-size: 5vmin;
+    border:none;
+}
+
+input:focus {
+    outline:none;
+}
+
+ul {
+    margin: 0 10vw 0 10vw;
+}
+
+li {
+    width:100%;
+    /*padding-right: 5vw;*/    
+    font-size: 3vmin;
+    list-style-type: none;
+    padding: 1vw;
+    border-left: thin solid black;
+    margin-top: 1vw;
+}
+
+li:hover {
+    margin-left: -2px;
+    border-left: medium solid blue;
+}
+
+.snippet {
+    font-size: 2vmin;
+    opacity: 0.6;
+}
+
+a {
+    text-decoration: none;
+}
