@@ -1,48 +1,52 @@
-@import url(https://fonts.googleapis.com/css?family=Lusitana);
-
-body {
-    margin:1%;
-    font-family: Lusitana;
-}
-
-#search * {
-    width: 100%;
-}
-
 input {
-    text-align: center;
-    font-size: 2vmax;
-    border:none;
+    text-align: center
 }
 
-input:focus {
-    outline:none;
-}
+/*@import url(https://fonts.googleapis.com/css?family=Lusitana);*/
 
-ul {
-    margin: 0 15vw 0 15vw;
-}
+/*body {*/
+/*    margin:1%;*/
+/*    font-family: Lusitana;*/
+/*}*/
 
-li {
-    width:100%;
+/*#search * {*/
+/*    width: 100%;*/
+/*}*/
+
+/*input {*/
+/*    text-align: center;*/
+/*    font-size: 2vmax;*/
+/*    border:none;*/
+/*}*/
+
+/*input:focus {*/
+/*    outline:none;*/
+/*}*/
+
+/*ul {*/
+/*    margin: 0 15vw 0 15vw;*/
+/*}*/
+
+/*li {*/
+/*    width:100%;*/
     /*padding-right: 5vw;*/    
-    font-size: 1.5vmax;
-    list-style-type: none;
-    padding: 1vw;
-    border-left: thin solid black;
-    margin-top: 1vw;
-}
+/*    font-size: 1.5vmax;*/
+/*    list-style-type: none;*/
+/*    padding: 1vw;*/
+/*    border-left: thin solid black;*/
+/*    margin-top: 1vw;*/
+/*}*/
 
-li:hover {
-    margin-left: -2px;
-    border-left: medium solid blue;
-}
+/*li:hover {*/
+/*    margin-left: -2px;*/
+/*    border-left: medium solid blue;*/
+/*}*/
 
-.snippet {
-    font-size: 1vmax;
-    opacity: 0.6;
-}
+/*.snippet {*/
+/*    font-size: 1vmax;*/
+/*    opacity: 0.6;*/
+/*}*/
 
-a {
-    text-decoration: none;
-}
+/*a {*/
+/*    text-decoration: none;*/
+/*}*/
