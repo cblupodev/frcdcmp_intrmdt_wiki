@@ -16,40 +16,43 @@
 <!--http://codepen.io/cblupodev/pen/doqvwr-->
 <!--https://www.freecodecamp.com/challenges/build-a-wikipedia-viewer-->
 
-<body ng-app='app' ng-view ng-cloak ng-controller='Main' layout='column' layout-align='center center'>
+<body ng-app='app' ng-view ng-cloak ng-controller='Main'>
     <!-- Angular Material requires Angular.js Libraries -->
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-animate.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-aria.min.js"></script>
     <script src="https://ajax.googleapis.com/ajax/libs/angularjs/1.5.3/angular-messages.min.js"></script>
-
     <!-- Angular Material Library -->
     <script src="https://ajax.googleapis.com/ajax/libs/angular_material/1.1.0-rc2/angular-material.min.js"></script>
     <script src='script.js'></script>
-     <div id='links' layout-align="start start" flex>
+
+    <!--links to codepen and freecodecamp-->
+    <div id='links' layout-align="start start" flex>
         <div layout='row'>
-           go to codepen project <a href='http://codepen.io/cblupodev/pen/doqvwr' target='_blank'> [codepen.io]</a>
+            go to codepen project <a href='http://codepen.io/cblupodev/pen/doqvwr' target='_blank'> [codepen.io]</a>
         </div>
         <div layout='row'>
-           go to freecodeamp assignment <a href='https://www.freecodecamp.com/challenges/build-a-wikipedia-viewer' target='_blank'> [freecodeamp.com]</a>
+            go to freecodeamp assignment <a href='https://www.freecodecamp.com/challenges/build-a-wikipedia-viewer' target='_blank'> [freecodeamp.com]</a>
         </div>
-     </div>
-    <md-input-container id='search'>
-        <!--autofocus-->
-        <input type='search' placeholder='type to search wikipedia ...' ng-model='query' my-enter='submit();'>
-    </md-input-container>
-    <div id='results'>
-        <md-list>
-            <md-list-item ng-repeat='e in results'>
-                <a href="http://en.wikipedia.org/wiki/{{e.title}}">
-                    <div>
-                        <span>{{e.title}}</span>
-                        <span class='snippet'>{{e.snippet}}</span>
-                    </div>
-                </a>
-            </md-list-item>
-        </md-list>
     </div>
+    <main layout='column' layout-align='center center'>
+        <md-input-container id='search'>
+            <!--autofocus-->
+            <input type='search' placeholder='search wikipedia' ng-model='query' my-enter='submit();'>
+        </md-input-container>
+        <div id='results'>
+            <md-list>
+                <md-list-item ng-repeat='e in results'>
+                    <a href="http://en.wikipedia.org/wiki/{{e.title}}">
+                        <div>
+                            <span>{{e.title}}</span>
+                            <span class='snippet'>{{e.snippet}}</span>
+                        </div>
+                    </a>
+                </md-list-item>
+            </md-list>
+        </div>
+    </main>
 </body>
 
 </html>

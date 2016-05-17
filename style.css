@@ -2,6 +2,10 @@ input {
     text-align: center
 }
 
+#links {
+    font-size: .7rem;
+}
+
 /*@import url(https://fonts.googleapis.com/css?family=Lusitana);*/
 
 /*body {*/
@@ -29,7 +33,7 @@ input {
 
 /*li {*/
 /*    width:100%;*/
-    /*padding-right: 5vw;*/    
+    /*padding-right: 5vw;*/
 /*    font-size: 1.5vmax;*/
 /*    list-style-type: none;*/
 /*    padding: 1vw;*/
