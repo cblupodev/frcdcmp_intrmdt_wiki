@@ -3,33 +3,31 @@
  */
 var app = angular.module('app', ['ngMaterial']);
 
-app.controller('Main', ['$scope', '$http', function($scope, $http) {
+app.controller('Main', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
     $scope.submit = function() {
         // query wiki
-        $http.jsonp('//en.wikipedia.org/w/api.php', {
-            data: {
-                action: 'query',
-                list: 'search',
-                srsearch: $scope.query,
-                format: 'json'
-            }
-        }).then(
-            function(data) {
-                l(data);
-            },
-            function(err) {
-                l(err);
-            }
-        );
+
+        // /w/api.php?action=query&format=json&list=search&srsearch=grass
+        $http.jsonp('//en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch={0}&callback=JSON_CALLBACK'.lp_format($scope.query))
+            .success(function(data) {
+                l(data.query.search);
+                $scope.results = data.query.search;
+            });
+    }
+    $scope.query = 'grass';
+    $scope.submit();
+    
+    $scope.insertSnippet = function(snip) {
+        return $sce.trustAsHtml(snip);
     }
 }]);
 
-app.directive('myEnter', function () {
-    return function (scope, element, attrs) {
+app.directive('myEnter', function() {
+    return function(scope, element, attrs) {
         l('int the custom directive');
-        element.bind("keydown keypress", function (event) {
+        element.bind("keydown keypress", function(event) {
             if (event.which === 13) {
-                scope.$apply(function (){
+                scope.$apply(function() {
                     scope.$eval(attrs.myEnter);
                 });
                 event.preventDefault();
@@ -38,6 +36,7 @@ app.directive('myEnter', function () {
     };
 });
 
+// '{0}{1}'.lp_format('asdf', 1 + 2);
 if (!String.prototype.format) {
     String.prototype.lp_format = function() {
         var args = arguments;
@@ -47,8 +46,8 @@ if (!String.prototype.format) {
     };
 }
 
-function l (message) {
-  console.log(message);
+function l(message) {
+    console.log(message);
 }
 
 // $(document).ready(function() {

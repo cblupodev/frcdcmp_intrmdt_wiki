@@ -46,10 +46,10 @@ input {
 /*    border-left: medium solid blue;*/
 /*}*/
 
-/*.snippet {*/
-/*    font-size: 1vmax;*/
-/*    opacity: 0.6;*/
-/*}*/
+.snippet {
+    font-size: 1vmax;
+    opacity: 0.6;
+}
 
 /*a {*/
 /*    text-decoration: none;*/

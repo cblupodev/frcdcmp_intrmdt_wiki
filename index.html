@@ -46,7 +46,7 @@
                     <a href="http://en.wikipedia.org/wiki/{{e.title}}">
                         <div>
                             <span>{{e.title}}</span>
-                            <span class='snippet'>{{e.snippet}}</span>
+                            <span class='snippet' ng-bind-html='insertSnippet(e.snippet);'></span>
                         </div>
                     </a>
                 </md-list-item>
