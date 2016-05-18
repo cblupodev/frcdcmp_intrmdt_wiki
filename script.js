@@ -5,7 +5,7 @@ var app = angular.module('app', ['ngMaterial']);
 
 app.controller('Main', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
     $scope.submit = function() {
-        // query wiki
+        localStorage.setItem('lastsearch', $scope.query);
 
         // /w/api.php?action=query&format=json&list=search&srsearch=grass
         $http.jsonp('//en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch={0}&callback=JSON_CALLBACK'.lp_format($scope.query))
@@ -14,9 +14,14 @@ app.controller('Main', ['$scope', '$http', '$sce', function($scope, $http, $sce)
                 $scope.results = data.query.search;
             });
     }
-    $scope.query = 'grass';
-    $scope.submit();
-    
+
+    // get history
+    var last = localStorage.getItem('lastsearch');
+    if (last !== 'null' && last != null) {
+        $scope.query = last;
+        $scope.submit(last);
+    }
+
     $scope.insertSnippet = function(snip) {
         return $sce.trustAsHtml(snip);
     }
@@ -49,51 +54,3 @@ if (!String.prototype.format) {
 function l(message) {
     console.log(message);
 }
-
-// $(document).ready(function() {
-
-//     // get history
-//     var last = localStorage.getItem('lastsearch');
-//     if (last !== 'null')
-//         document.querySelector('input').defaultValue = last || '';
-//     find(last);
-
-//     // find("history");
-
-//     function find(q) {
-//         $.ajax({
-//             url: '//en.wikipedia.org/w/api.php',
-//             data: {
-//                 action: 'query',
-//                 list: 'search',
-//                 srsearch: q,
-//                 format: 'json'
-//             },
-//             dataType: 'jsonp',
-//             success: function(data) {
-//                 localStorage.setItem('lastsearch', q);
-//                 console.log(data);
-//                 data.query.search.forEach(function(elem) {
-//                     $('ul').append(
-//                         '<li>' +
-//                         '<a href="http://en.wikipedia.org/wiki/ ' + elem.title + '">' +
-//                         '<div>' +
-//                         '<span class="title">' + elem.title + '</span>' +
-//                         '<br>' +
-//                         '<span class="snippet">' + elem.snippet + '</span>' +
-//                         '</div>' +
-//                         '</a>' +
-//                         '</li>'
-//                     )
-//                 });
-//             }
-//         });
-//     }
-
-//     $('input').on('keyup', function(e) {
-//         if (e.keyCode === 13) {
-//             $('li').remove();
-//             find($('input')[0].value);
-//         }
-//     });
-// });
