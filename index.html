@@ -35,24 +35,26 @@
             go to freecodeamp assignment <a href='https://www.freecodecamp.com/challenges/build-a-wikipedia-viewer' target='_blank'> [freecodeamp.com]</a>
         </div>
     </div>
-    <main layout='column' layout-align='center center'>
-        <md-input-container id='search'>
-            <!--autofocus-->
-            <input type='search' placeholder='search wikipedia' ng-model='query' my-enter='submit();'>
-        </md-input-container>
-        <div id='results'>
-            <md-list>
-                <md-list-item ng-repeat='e in results'>
-                    <a href="http://en.wikipedia.org/wiki/{{e.title}}">
-                        <div>
-                            <span>{{e.title}}</span>
-                            <span class='snippet' ng-bind-html='insertSnippet(e.snippet);'></span>
-                        </div>
-                    </a>
-                </md-list-item>
-            </md-list>
+    <md-content layout layout-align='center center' flex-gt-sm='70' flex-offset-gt-sm='15'>
+        <div layout='column' layout-align='center center' layout-padding layout-margin>
+            <md-input-container id='search'>
+                <!--autofocus-->
+                <input type='search' placeholder='search wikipedia' ng-model='query' my-enter='submit();'>
+            </md-input-container>
+            <div id='results'>
+                <md-list>
+                    <md-list-item ng-repeat='e in results'>
+                        <a target='_blank' href="http://en.wikipedia.org/wiki/{{e.title}}" style='text-decoration: none !important;'>
+                            <div class='md-list-item-text' layout='column'>
+                                <span>{{e.title}}</span>
+                                <span class='snippet' ng-bind-html='insertSnippet(e.snippet);'></span>
+                            </div>
+                        </a>
+                    </md-list-item>
+                </md-list>
+            </div>
         </div>
-    </main>
+    </md-content>
 </body>
 
 </html>
