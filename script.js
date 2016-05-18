@@ -5,31 +5,36 @@ var app = angular.module('app', ['ngMaterial']);
 
 app.controller('Main', ['$scope', '$http', '$sce', function($scope, $http, $sce) {
     $scope.submit = function() {
+        
+        // set the local storage item to the search query
         localStorage.setItem('lastsearch', $scope.query);
 
-        // /w/api.php?action=query&format=json&list=search&srsearch=grass
+        // http reqeuest to the wiki api
         $http.jsonp('//en.wikipedia.org/w/api.php?action=query&format=json&list=search&srsearch={0}&callback=JSON_CALLBACK'.lp_format($scope.query))
             .success(function(data) {
-                l(data.query.search);
                 $scope.results = data.query.search;
             });
     }
 
-    // get history
+    // get history from local storage
+    // and submit the search if there's a recent search
     var last = localStorage.getItem('lastsearch');
     if (last !== 'null' && last != null) {
         $scope.query = last;
         $scope.submit(last);
     }
-
+    
+    // insertsearch the search result snippets into the dom
+    // have to use sce becaseu angular doesn't trust the incoming html
     $scope.insertSnippet = function(snip) {
         return $sce.trustAsHtml(snip);
     }
 }]);
 
+
+// detect the enter key press from the search input
 app.directive('myEnter', function() {
     return function(scope, element, attrs) {
-        l('int the custom directive');
         element.bind("keydown keypress", function(event) {
             if (event.which === 13) {
                 scope.$apply(function() {
@@ -51,6 +56,7 @@ if (!String.prototype.format) {
     };
 }
 
-function l(message) {
-    console.log(message);
+// shortcut for console.log()
+function l (message) {
+  console.log(message);
 }
